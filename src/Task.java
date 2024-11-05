@@ -13,13 +13,28 @@ public class Task {
         this.isCompleted = false;
     }
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public String getName() {
+        return name;
+    }
 
-    public Priority getPriority() { return priority; }
-    public void setPriority(Priority priority) { this.priority = priority; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public boolean isCompleted() { return isCompleted; }
-    public void toggleStatus() { this.isCompleted = !this.isCompleted; }
+    public Priority getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Priority priority) {
+        this.priority = priority;
+    }
+
+    public boolean isCompleted() {
+        return isCompleted;
+    }
+
+    public void toggleStatus() {
+        this.isCompleted = !this.isCompleted;
+    }
 }
 
