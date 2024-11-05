@@ -1,33 +1,25 @@
-public class Task {
-    private final int id;
-    private final String name;
-    private boolean done;
-    private final String priority;
-
-    public Task(int id, String name, boolean done, String priority) {
-        this.id = id;
-        this.name = name;
-        this.done = done;
-        this.priority = priority;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public boolean isDone() {
-        return done;
-    }
-
-    public String getPriority() {
-        return priority;
-    }
-
-    public void setDone(boolean done) {
-        this.done = done;
-    }
+enum Priority {
+    HIGH, MEDIUM, LOW
 }
+
+public class Task {
+    private String name;
+    private Priority priority;
+    private boolean isCompleted;
+
+    public Task(String name, Priority priority) {
+        this.name = name;
+        this.priority = priority;
+        this.isCompleted = false;
+    }
+
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
+    public Priority getPriority() { return priority; }
+    public void setPriority(Priority priority) { this.priority = priority; }
+
+    public boolean isCompleted() { return isCompleted; }
+    public void toggleStatus() { this.isCompleted = !this.isCompleted; }
+}
+
