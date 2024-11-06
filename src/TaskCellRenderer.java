@@ -1,3 +1,5 @@
+import ui.CustomLabel;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -15,13 +17,18 @@ public class TaskCellRenderer extends JPanel implements ListCellRenderer<Task> {
 
     @Override
     public Component getListCellRendererComponent(JList<? extends Task> list, Task task, int index, boolean isSelected, boolean cellHasFocus) {
-        nameLabel.setText(task.getName());
-        nameLabel.setForeground(task.isCompleted() ? Color.GRAY : Color.BLACK);
+        nameLabel.setText(new CustomLabel(task.getName(), task.isCompleted()).getText());
 
         switch (task.getPriority()) {
-            case HIGH -> iconLabel.setIcon(new ImageIcon("red.jpg"));
-            case MEDIUM -> iconLabel.setIcon(new ImageIcon("yellow.jpg"));
-            case LOW -> iconLabel.setIcon(new ImageIcon("green.jpg"));
+            case ALTA:
+                iconLabel.setIcon(new ImageIcon((new ImageIcon("red.jpg")).getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH)));
+                break;
+            case MEDIA:
+                iconLabel.setIcon(new ImageIcon((new ImageIcon("yellow.jpg")).getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH)));
+                break;
+            case BAJA:
+                iconLabel.setIcon(new ImageIcon((new ImageIcon("green.jpg")).getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH)));
+                break;
         }
 
         setBackground(isSelected ? Color.LIGHT_GRAY : Color.WHITE);
