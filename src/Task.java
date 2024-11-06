@@ -1,10 +1,6 @@
-enum Priority {
-    HIGH, MEDIUM, LOW
-}
-
 public class Task {
-    private String name;
-    private Priority priority;
+    private final String name;
+    private final Priority priority;
     private boolean isCompleted;
 
     public Task(String name, Priority priority) {
@@ -17,16 +13,8 @@ public class Task {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Priority getPriority() {
         return priority;
-    }
-
-    public void setPriority(Priority priority) {
-        this.priority = priority;
     }
 
     public boolean isCompleted() {
