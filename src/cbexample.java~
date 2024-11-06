@@ -1,0 +1,61 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+public class cbexample  extends JButton {
+    private static final String BUTTON_HTML_TEMPLATE = "<html><div style=\"padding: 8px 15px; "
+                                                       + "margin: 5px; border-radius: 10px; background-color: #007bff; "
+                                                       + "color: white; font-family: Arial;\">%s</div></html>";
+
+    public cbexample(String text, String backgroundColor) {
+        super(String.format(BUTTON_HTML_TEMPLATE.replace("#007bff", "#" + backgroundColor), text));
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }
+
+    public cbexample(String text) {
+        super(String.format(BUTTON_HTML_TEMPLATE, text));
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Custom Button Test");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(300, 200);
+
+        cbexample customButton = new cbexample("Haz clic aquí", "ff0000");
+        cbexample defaultcolor = new cbexample("Haz clic aqui");
+        customButton.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                JOptionPane.showMessageDialog(frame, "¡Botón presionado!");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+        frame.add(customButton);
+        frame.add(defaultcolor);
+
+        frame.setLayout(new FlowLayout());
+        frame.setVisible(true);
+    }
+}
