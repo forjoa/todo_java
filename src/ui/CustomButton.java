@@ -6,7 +6,7 @@ import java.awt.*;
 public class CustomButton extends JButton {
     private static final String BUTTON_HTML_TEMPLATE = "<html><div style=\"padding: 8px 15px; "
                                                        + "margin: 5px; border-radius: 10px; background-color: #%s; "
-                                                       + "color: white; font-family: Arial;\">%s</div></html>";
+                                                       + "color: white; font-family: Inter;\">%s</div></html>";
 
     public CustomButton(String text, String backgroundColor) {
         super(String.format(BUTTON_HTML_TEMPLATE, backgroundColor, text));
