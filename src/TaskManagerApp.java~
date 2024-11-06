@@ -42,6 +42,8 @@ public class TaskManagerApp extends JFrame {
             if (!name.isEmpty()) {
                 taskModel.addElement(new Task(name, priority));
                 taskNameField.setText("");
+            } else {
+                JOptionPane.showMessageDialog(this, "Por favor, ingrese un nombre de tarea.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         });
 

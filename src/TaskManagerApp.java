@@ -1,3 +1,5 @@
+import ui.CustomButton;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -26,14 +28,14 @@ public class TaskManagerApp extends JFrame {
         JPanel inputPanel = new JPanel(new GridLayout(1, 3));
         taskNameField = new JTextField();
         priorityComboBox = new JComboBox<>(Priority.values());
-        JButton addButton = new JButton("Añadir tarea");
+        CustomButton addButton = new CustomButton("Añadir tarea");
 
         inputPanel.add(taskNameField);
         inputPanel.add(priorityComboBox);
         inputPanel.add(addButton);
         add(inputPanel, BorderLayout.NORTH);
 
-        JButton deleteButton = new JButton("Eliminar tarea");
+        CustomButton deleteButton = new CustomButton("Eliminar tarea", "f00");
         add(deleteButton, BorderLayout.SOUTH);
 
         addButton.addActionListener(e -> {
