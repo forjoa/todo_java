@@ -2,8 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class TaskCellRenderer extends JPanel implements ListCellRenderer<Task> {
-    private JLabel nameLabel;
-    private JLabel iconLabel;
+    private final JLabel nameLabel;
+    private final JLabel iconLabel;
 
     public TaskCellRenderer() {
         setLayout(new BorderLayout());

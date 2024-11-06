@@ -19,9 +19,9 @@ public class TaskCellRenderer extends JPanel implements ListCellRenderer<Task> {
         nameLabel.setForeground(task.isCompleted() ? Color.GRAY : Color.BLACK);
 
         switch (task.getPriority()) {
-            case HIGH -> iconLabel.setIcon(new ImageIcon("high_priority_icon.png"));
-            case MEDIUM -> iconLabel.setIcon(new ImageIcon("medium_priority_icon.png"));
-            case LOW -> iconLabel.setIcon(new ImageIcon("low_priority_icon.png"));
+            case HIGH -> iconLabel.setIcon(new ImageIcon("red.jpg"));
+            case MEDIUM -> iconLabel.setIcon(new ImageIcon("yellow.jpg"));
+            case LOW -> iconLabel.setIcon(new ImageIcon("green.jpg"));
         }
 
         setBackground(isSelected ? Color.LIGHT_GRAY : Color.WHITE);
