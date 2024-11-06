@@ -18,6 +18,7 @@ public class TaskCellRenderer extends JPanel implements ListCellRenderer<Task> {
     @Override
     public Component getListCellRendererComponent(JList<? extends Task> list, Task task, int index, boolean isSelected, boolean cellHasFocus) {
         nameLabel.setText(new CustomLabel(task.getName(), task.isCompleted()).getText());
+        nameLabel.setFont(new Font("Inter", Font.PLAIN, 12));
 
         switch (task.getPriority()) {
             case ALTA:
