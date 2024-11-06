@@ -27,7 +27,9 @@ public class TaskManagerApp extends JFrame {
 
         JPanel inputPanel = new JPanel(new GridLayout(1, 3));
         taskNameField = new JTextField();
+        taskNameField.setFont(new Font("Inter", Font.PLAIN, 12));
         priorityComboBox = new JComboBox<>(Priority.values());
+        priorityComboBox.setFont(new Font("Inter", Font.BOLD, 12));
         CustomButton addButton = new CustomButton("Añadir tarea");
 
         inputPanel.add(taskNameField);
