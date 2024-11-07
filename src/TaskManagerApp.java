@@ -22,7 +22,10 @@ public class TaskManagerApp extends JFrame {
         taskList = new JList<>(taskModel);
         taskList.setCellRenderer(new TaskCellRenderer());
 
-        JScrollPane scrollPane = new JScrollPane(taskList);
+        JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 5));
+        panel.add(taskList);
+
+        JScrollPane scrollPane = new JScrollPane(panel);
         add(scrollPane, BorderLayout.CENTER);
 
         JPanel inputPanel = new JPanel(new GridLayout(1, 3));
