@@ -30,10 +30,13 @@ public class TaskManagerApp extends JFrame {
 
         JPanel inputPanel = new JPanel(new GridLayout(1, 3));
         taskNameField = new JTextField();
+        taskNameField.setToolTipText("Input para crear una nueva tarea.");
         taskNameField.setFont(new Font("Inter", Font.PLAIN, 12));
         priorityComboBox = new JComboBox<>(Priority.values());
+        priorityComboBox.setToolTipText("Selección de prioridad.");
         priorityComboBox.setFont(new Font("Inter", Font.BOLD, 12));
         CustomButton addButton = new CustomButton("Añadir tarea");
+        addButton.setToolTipText("Botón para añadir una nueva tarea.");
 
         inputPanel.add(taskNameField);
         inputPanel.add(priorityComboBox);
@@ -41,6 +44,7 @@ public class TaskManagerApp extends JFrame {
         add(inputPanel, BorderLayout.NORTH);
 
         CustomButton deleteButton = new CustomButton("Eliminar tarea", "f00");
+        deleteButton.setToolTipText("Botón para borrar la tarea seleccionada.");
         add(deleteButton, BorderLayout.SOUTH);
 
         addButton.addActionListener(e -> {
