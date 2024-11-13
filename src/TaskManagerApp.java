@@ -2,14 +2,24 @@ import ui.CustomButton;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Objects;
 
 public class TaskManagerApp extends JFrame {
     private final DefaultListModel<Task> taskModel;
     private final JList<Task> taskList;
     private final JTextField taskNameField;
     private final JComboBox<Priority> priorityComboBox;
+    private final String[] lookAndFeels = {
+            "Metal (Cross-Platform)",
+            "Windows",
+            "Windows Classic",
+            "Nimbus",
+            "CDE/Motif"
+    };
 
     public TaskManagerApp() {
         setTitle("ToDo List");
@@ -28,7 +38,7 @@ public class TaskManagerApp extends JFrame {
         JScrollPane scrollPane = new JScrollPane(panel);
         add(scrollPane, BorderLayout.CENTER);
 
-        JPanel inputPanel = new JPanel(new GridLayout(1, 3));
+        JPanel inputPanel = new JPanel(new GridLayout(1, 4));
         taskNameField = new JTextField();
         taskNameField.setToolTipText("Input para crear una nueva tarea.");
         taskNameField.setFont(new Font("Inter", Font.PLAIN, 12));
@@ -38,9 +48,12 @@ public class TaskManagerApp extends JFrame {
         CustomButton addButton = new CustomButton("Añadir tarea");
         addButton.setToolTipText("Botón para añadir una nueva tarea.");
 
+        JComboBox<String> lafc = getStringJComboBox();
+
         inputPanel.add(taskNameField);
         inputPanel.add(priorityComboBox);
         inputPanel.add(addButton);
+        inputPanel.add(lafc);
         add(inputPanel, BorderLayout.NORTH);
 
         CustomButton deleteButton = new CustomButton("Eliminar tarea", "f00");
@@ -76,6 +89,44 @@ public class TaskManagerApp extends JFrame {
                 taskModel.remove(selected);
             }
         });
+    }
+
+    private JComboBox<String> getStringJComboBox() {
+        JComboBox<String> lafc = new JComboBox<>(lookAndFeels);
+        lafc.addActionListener(e -> {
+            try {
+                String slaf = (String) lafc.getSelectedItem();
+                switch (Objects.requireNonNull(slaf)) {
+                    case "Metal (Cross-Platform)":
+                        UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+                        // JOptionPane.showConfirmDialog(null, slaf);
+                        break;
+                    case "Windows":
+                        UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+                        // JOptionPane.showConfirmDialog(null, slaf);
+                        break;
+                    case "Windows Classic":
+                        UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel");
+                        // JOptionPane.showConfirmDialog(null, slaf);
+                        break;
+                    case "Nimbus":
+                        UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+                        // JOptionPane.showConfirmDialog(null, slaf);
+                        break;
+                    case "CDE/Motif":
+                        UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
+                        // JOptionPane.showConfirmDialog(null, slaf);
+                        break;
+                    default:
+                        UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+                        break;
+                }
+                SwingUtilities.updateComponentTreeUI(TaskManagerApp.this);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+        return lafc;
     }
 
     public static void main(String[] args) {
