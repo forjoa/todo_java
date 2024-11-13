@@ -2,10 +2,7 @@ import ui.CustomButton;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.util.Objects;
 
 public class TaskManagerApp extends JFrame {
@@ -47,6 +44,7 @@ public class TaskManagerApp extends JFrame {
         priorityComboBox.setFont(new Font("Inter", Font.BOLD, 12));
         CustomButton addButton = new CustomButton("Añadir tarea");
         addButton.setToolTipText("Botón para añadir una nueva tarea.");
+        addButton.setMnemonic(KeyEvent.VK_A);
 
         JComboBox<String> lafc = getStringJComboBox();
 
@@ -58,6 +56,7 @@ public class TaskManagerApp extends JFrame {
 
         CustomButton deleteButton = new CustomButton("Eliminar tarea", "f00");
         deleteButton.setToolTipText("Botón para borrar la tarea seleccionada.");
+        deleteButton.setMnemonic(KeyEvent.VK_D);
         add(deleteButton, BorderLayout.SOUTH);
 
         addButton.addActionListener(e -> {
